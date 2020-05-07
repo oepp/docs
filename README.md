@@ -1,6 +1,11 @@
 ## Fill in the blanks dto
 ### C#
 ```cs
+    public class QuestionLine
+    {
+        public QuestionItem[] Items { get; set; }
+    }
+
     public class QuestionItem
     {
         public string Text { get; set; }
@@ -13,60 +18,58 @@
 
         public string Description = "Fill in the blanks to declare two variables of type int and display their sum to the screen.";
 
-        public QuestionItem[] Items = new QuestionItem[]
+        public QuestionLine[] Lines = new QuestionLine[]
         {
-            new QuestionItem () { Text = "int x = 8;", IsBlank = false },
-            new QuestionItem () { Text = "\n", IsBlank = false },
-            new QuestionItem () { Text = "int", IsBlank = true },
-            new QuestionItem () { Text = " y = 15;", IsBlank = false },
-            new QuestionItem () { Text = "\n", IsBlank = false },
-            new QuestionItem () { Text = "Console.Writeline(", IsBlank = false },
-            new QuestionItem () { Text = "x", IsBlank = true },
-            new QuestionItem () { Text = "+", IsBlank = true },
-            new QuestionItem () { Text = "y);", IsBlank = false }
-          };
+            new QuestionLine { Items = new QuestionItem[] { new QuestionItem() { Text = "int x = 8;", IsBlank = false } } },
+            new QuestionLine { Items = new QuestionItem[] { new QuestionItem() { Text = "int", IsBlank = true }, new QuestionItem() { Text = " y = 15;", IsBlank = false } }},
+            new QuestionLine { Items = new QuestionItem[] { new QuestionItem() { Text = "Console.Writeline(", IsBlank = false }, new QuestionItem() { Text = "x", IsBlank = true }, new QuestionItem() { Text = "+", IsBlank = true }, new QuestionItem() { Text = "y);", IsBlank = false } } }
+        };
     }
 ```
 ### Json
 ```json
 {
   "description": "Fill in the blanks to declare two variables of type int and display their sum to the screen.",
-  "items": [
+  "lines": [
     {
-      "text": "int x = 8;",
-      "isBlank": false
+      "items": [
+        {
+          "text": "int x = 8;",
+          "isBlank": false
+        }
+      ]
     },
     {
-      "text": "\n",
-      "isBlank": false
+      "items": [
+        {
+          "text": "int",
+          "isBlank": true
+        },
+        {
+          "text": " y = 15;",
+          "isBlank": false
+        }
+      ]
     },
     {
-      "text": "int",
-      "isBlank": true
-    },
-    {
-      "text": " y = 15;",
-      "isBlank": false
-    },
-    {
-      "text": "\n",
-      "isBlank": false
-    },
-    {
-      "text": "Console.Writeline(",
-      "isBlank": false
-    },
-    {
-      "text": "x",
-      "isBlank": true
-    },
-    {
-      "text": "+",
-      "isBlank": true
-    },
-    {
-      "text": "y);",
-      "isBlank": false
+      "items": [
+        {
+          "text": "Console.Writeline(",
+          "isBlank": false
+        },
+        {
+          "text": "x",
+          "isBlank": true
+        },
+        {
+          "text": "+",
+          "isBlank": true
+        },
+        {
+          "text": "y);",
+          "isBlank": false
+        }
+      ]
     }
   ]
 }
