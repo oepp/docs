@@ -1,4 +1,4 @@
-## Fill in the blanks dto
+## Question DTO
 ### C#
 ```cs
     public class QuestionLine
@@ -70,6 +70,87 @@
           "isBlank": false
         }
       ]
+    }
+  ]
+}
+```
+
+## LessonInfo DTO
+### C#
+```cs
+	public enum LessonType
+    {
+        FillInTheBlanks
+    }
+
+    public class LessonInfo
+    {
+        public int Id { get; set; }
+        public LessonType Type { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public byte[] Image { get; set; }
+        public string Creator { get; set; }
+        public DateTime CreationTime { get; set; }
+    }
+
+    public class LessonProvider
+    {
+        public LessonInfo[] GetPopularLessons = new LessonInfo[]
+        {
+            new LessonInfo { Id = 1, Type = LessonType.FillInTheBlanks, Title = "Java", Image = new byte[] {110, 125, 123}, Creator = "Alp Yuksel", CreationTime = new DateTime(2020, 5, 9) },
+            new LessonInfo { Id = 5, Type = LessonType.FillInTheBlanks, Title = "C#", Image = new byte[] {37, 33, 120}, Creator = "Onur Tanrikulu", CreationTime = new DateTime(2020, 5, 8) }
+        };
+
+
+        public LessonInfo[] GetNewLessons = new LessonInfo[]
+        {
+            new LessonInfo { Id = 1233, Type = LessonType.FillInTheBlanks, Title = "Unity", Image = new byte[] {45, 55, 32}, Creator = "Emre Edemir", CreationTime = new DateTime(2020, 5, 10) },
+            new LessonInfo { Id = 1, Type = LessonType.FillInTheBlanks, Title = "Java", Image = new byte[] {110, 125, 123}, Creator = "Alp Yuksel", CreationTime = new DateTime(2020, 5, 9) }
+        };
+    }
+```
+### Json
+```json
+{
+  "getPopularLessons": [
+    {
+      "id": 1,
+      "type": 0,
+      "title": "Java",
+      "description": "Introduction to Java",
+      "image": "blob bytes will be here",
+      "creator": "Alp Yuksel",
+      "creationTime": "2020-05-09T00:00:00"
+    },
+    {
+      "id": 5,
+      "type": 0,
+      "title": "C#",
+      "description": "Introduction to C#",
+      "image": "blob bytes will be here",
+      "creator": "Onur Tanrikulu",
+      "creationTime": "2020-05-08"
+    }
+  ],
+  "getNewLessons": [
+    {
+      "id": 1233,
+      "type": 0,
+      "title": "Unity",
+      "description": "Introduction to Unity",
+      "image": "blob bytes will be here",
+      "creator": "Emre Edemir",
+      "creationTime": "2020-05-10"
+    },
+    {
+      "id": 1,
+      "type": 0,
+      "title": "Java",
+      "description": "Introduction to Java",
+      "image": "blob bytes will be here",
+      "creator": "Alp Yuksel",
+      "creationTime": "2020-05-09"
     }
   ]
 }
