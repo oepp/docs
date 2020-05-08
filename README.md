@@ -78,7 +78,22 @@
 ## LessonInfo DTO
 ### C#
 ```cs
-	public enum LessonType
+    public class Lesson
+    {
+        public Question[] Questions { get; set; }
+    }
+
+    public class LessonService
+    {
+        private Dictionary<int, Lesson> MockLessonDatabase;
+
+        public Lesson GetLesson(int id)
+        {
+            return MockLessonDatabase[id];
+        }
+    }
+
+    public enum LessonType
     {
         FillInTheBlanks
     }
@@ -88,13 +103,13 @@
         public int Id { get; set; }
         public LessonType Type { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }
+        public string Description { get; set }
         public byte[] Image { get; set; }
         public string Creator { get; set; }
         public DateTime CreationTime { get; set; }
     }
 
-    public class LessonProvider
+    public class LessonInfoService
     {
         public LessonInfo[] GetPopularLessons = new LessonInfo[]
         {
